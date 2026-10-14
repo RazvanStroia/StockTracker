@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StockTracker.View.StockDetailsPage"
+             Title="{Binding Stock.ticker}"
+             xmlns:viewmodel="clr-namespace:StockTracker.ViewModel"
+             x:DataType="viewmodel:StockDetailsViewModel"
+             xmlns:model="clr-namespace:StockTracker.Model">
+    <Grid        
+        ColumnDefinitions="*,*"
+        ColumnSpacing="5"
+        RowDefinitions="*,Auto"
+        RowSpacing="0">
+        
+    <ScrollView
+        Grid.ColumnSpan="2">
+        <Grid RowDefinitions="Auto, Auto, Auto, *">
+            <BoxView
+                BackgroundColor="{StaticResource Primary}"
+                Grid.RowSpan="2"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"
+                HeightRequest="150"/>
+            <Border Style="{StaticResource CardView}">
+                <Label
+                    Style="{StaticResource LargeLabel}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Text="{Binding Stock.name}"
+                    TextColor="Black"
+                    FontAttributes="Bold"/>
+
+            </Border>
+            <VerticalStackLayout Grid.Row="2" Padding="10" Spacing="10">
+                <Grid RowDefinitions="*, *, *, *, * ,*"
+                      ColumnDefinitions="*, *"
+                      RowSpacing="20"
+                      ColumnSpacing="20">
+                    <Border Style="{StaticResource CardView}" Grid.Row="0" Grid.Column="0">
+                        <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.open, StringFormat='Price on Market Open: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Border>
+                    <Border Style="{StaticResource CardView}" Grid.Row="0" Grid.Column="1">
+                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.close, StringFormat='Price on Market Close: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Border>
+                    <Border Style="{StaticResource CardView}" Grid.Row="1" Grid.Column="0">
+                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.adj_open, StringFormat='Adjusted Price on Market Open: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Border>
+                    <Border Style="{StaticResource CardView}" Grid.Row="1" Grid.Column="1">
+                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.adj_close, StringFormat='Adjusted Price on Market Close: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Border>
+                    <Border Style="{StaticResource CardView}" Grid.Row="2" Grid.Column="0">
+                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.high, StringFormat='Highest Price on the day: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Border>
+                    <Border Style="{StaticResource CardView}" Grid.Row="2" Grid.Column="1">
+                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.low, StringFormat='Lowest Price on the day: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Border>
+                    <Border Style="{StaticResource CardView}" Grid.Row="3" Grid.Column="0">
+                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.adj_high, StringFormat='Adjusted Highest Price on the day: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Border>
+                    <Border Style="{StaticResource CardView}" Grid.Row="3" Grid.Column="1">
+                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.adj_low, StringFormat='Adjusted Lowest Price on the day: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Border>
+                    <Border Style="{StaticResource CardView}" Grid.Row="4" Grid.Column="0">
+                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.volume, StringFormat='Trading Volume: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Border>
+                    <Border Style="{StaticResource CardView}" Grid.Row="4" Grid.Column="1">
+                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.adj_volume, StringFormat='Adjusted Trading Volume: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Border>
+                    <Border Style="{StaticResource CardView}" Grid.Row="5" Grid.Column="0">
+                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.dividend, StringFormat='Dividend Price: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Border>
+                    <Border Style="{StaticResource CardView}" Grid.Row="5" Grid.Column="1">
+                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.asset_type, StringFormat='Asset Type: {0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Border>
+
+                </Grid>
+            </VerticalStackLayout>
+            <Button Text="Get Stocks"
+                Command="{Binding GetStockDetailsCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.Column="0"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="Fill"
+                           VerticalOptions="Center"
+                           Color="{StaticResource Primary}"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"/>
+        </Grid>
+
+    </ScrollView>
+    </Grid>
+</ContentPage>

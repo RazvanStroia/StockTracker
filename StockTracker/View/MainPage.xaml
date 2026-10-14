@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StockTracker.View.MainPage"
+             xmlns:viewmodel="clr-namespace:StockTracker.ViewModel"
+             x:DataType="viewmodel:StockViewModel"
+             xmlns:model="clr-namespace:StockTracker.Model">
+
+    <Grid
+        ColumnDefinitions="*,*"
+        ColumnSpacing="5"
+        RowDefinitions="*,Auto"
+        RowSpacing="0">
+        <CollectionView
+            Grid.ColumnSpan="2"
+            ItemsSource="{Binding Stocks}"
+            SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Stock">
+                    <Grid Padding="10" RowSpacing="20">
+                        <Border HeightRequest="85" Style="{StaticResource CardView}">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:StockViewModel}}, x:DataType=viewmodel:StockViewModel, Path=GoToDetailsCommand}"
+                                    CommandParameter="{Binding .}"/>
+                            </Border.GestureRecognizers>
+                            <Grid Padding="0" ColumnDefinitions="75,*">
+                                <Image Aspect="AspectFill" Source="{Binding image}"
+                                       WidthRequest="80"
+                                       HeightRequest="80"/>
+                                <VerticalStackLayout
+                                    VerticalOptions="Center"
+                                    Grid.Column="1"
+                                    Padding="10">
+                                    <Label Style="{StaticResource LargeLabel}" Text="{Binding name}" HorizontalTextAlignment="Center"/>
+                                    <Grid ColumnDefinitions="*,*" ColumnSpacing="130">
+                                        <Label Style="{StaticResource SmallLabel}" Text="{Binding ticker}" Grid.Column="0"/>
+                                        <Label Style="{StaticResource SmallLabel}" Text="{Binding open , StringFormat='${0}/unit'}" Grid.Column="1"/>
+                                    </Grid>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Get Stocks"
+                Command="{Binding GetStocksCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Grid.Column="0"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="Fill"
+                           VerticalOptions="Center"
+                           Color="{StaticResource Primary}"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"/>
+    </Grid>
+
+</ContentPage>
