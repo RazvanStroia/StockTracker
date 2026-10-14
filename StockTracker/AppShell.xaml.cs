@@ -9,6 +9,7 @@ namespace StockTracker
             InitializeComponent();
 
             Routing.RegisterRoute(nameof(StockDetailsPage), typeof(StockDetailsPage));
+            Routing.RegisterRoute(nameof(StockSearchPage), typeof(StockSearchPage));
         }
     }
 }

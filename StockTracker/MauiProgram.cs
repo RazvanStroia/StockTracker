@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using System.Reflection;
 using StockTracker.ViewModel;
 using StockTracker.Services;
+using MauiIcons.SegoeFluent;
 
 namespace StockTracker
 {
@@ -19,9 +20,12 @@ namespace StockTracker
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            builder.UseMauiApp<App>().UseSegoeFluentMauiIcons();
+
             builder.Services.AddSingleton<StockViewModel>();
             builder.Services.AddSingleton<StockService>();
 
+            builder.Services.AddTransient<StockSearchViewModel>();
             builder.Services.AddTransient<StockDetailsViewModel>();
 
             builder.AddAppSettings();

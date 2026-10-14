@@ -26,8 +26,8 @@
                             </Border.GestureRecognizers>
                             <Grid Padding="0" ColumnDefinitions="75,*">
                                 <Image Aspect="AspectFill" Source="{Binding image}"
-                                       WidthRequest="80"
-                                       HeightRequest="80"/>
+                                       WidthRequest="85"
+                                       HeightRequest="85"/>
                                 <VerticalStackLayout
                                     VerticalOptions="Center"
                                     Grid.Column="1"

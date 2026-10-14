@@ -76,6 +76,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="AathifMahir.Maui.MauiIcons.SegoeFluent" Version="6.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.12" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.12" />
@@ -86,6 +87,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="View\StockDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\StockSearchPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

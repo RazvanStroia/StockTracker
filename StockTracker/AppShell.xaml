@@ -5,28 +5,32 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:StockTracker"
     xmlns:view="clr-namespace:StockTracker.View"
+    xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
     Title="StockTracker">
 
     <Shell.Resources>
         <ResourceDictionary>
             <Style TargetType="Shell" ApplyToDerivedTypes="True">
-                <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Dark={StaticResource PrimaryDark}, Light={StaticResource Primary}}" />
                 <Setter Property="Shell.ForegroundColor" Value="{OnPlatform WinUI={StaticResource Primary}, Default=White}" />
                 <Setter Property="Shell.TitleColor" Value="White" />
                 <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
                 <Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Dark=#95FFFFFF, Light=#95000000}" />
                 <Setter Property="Shell.NavBarHasShadow" Value="False" />
-                <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Dark={StaticResource DarkBackground}, Light={StaticResource LightBackground}}" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Dark={StaticResource PrimaryDark}, Light={StaticResource Primary}}" />
                 <Setter Property="Shell.TabBarForegroundColor" Value="{AppThemeBinding Dark={StaticResource LightBackground}, Light={StaticResource DarkBackground}}" />
                 <Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Dark={StaticResource LightBackground}, Light={StaticResource DarkBackground}}" />
                 <Setter Property="Shell.TabBarUnselectedColor" Value="{AppThemeBinding Dark=#95FFFFFF, Light=#95000000}" />
             </Style>
         </ResourceDictionary>
     </Shell.Resources>
-
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate view:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <Tab mi:MauiIcon.Value="{mi:SegoeFluent Icon=Home, IconColor=White, TargetName='.'}" Title="Home">
+            <ShellContent ContentTemplate="{DataTemplate view:MainPage}" Route="MainPage" Title="StockTracker"/>
+        </Tab>
+        <Tab mi:MauiIcon.Value="{mi:SegoeFluent Icon=Search, IconColor=White, TargetName='.'}" Title="Search">
+            <ShellContent ContentTemplate="{DataTemplate view:StockSearchPage}" Title="Search"/>
+        </Tab>
+    </TabBar>
 
 </Shell>

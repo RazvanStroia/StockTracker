@@ -8,77 +8,86 @@
              xmlns:model="clr-namespace:StockTracker.Model">
     <Grid        
         ColumnDefinitions="*,*"
-        ColumnSpacing="5"
+        ColumnSpacing="0"
         RowDefinitions="*,Auto"
         RowSpacing="0">
         
     <ScrollView
         Grid.ColumnSpan="2">
-        <Grid RowDefinitions="Auto, Auto, Auto, *">
-            <BoxView
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, *"
+              RowSpacing="10">
+                <BoxView
                 BackgroundColor="{StaticResource Primary}"
                 Grid.RowSpan="2"
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"
-                HeightRequest="150"/>
-            <Border Style="{StaticResource CardView}">
-                <Label
-                    Style="{StaticResource LargeLabel}"
+                HeightRequest="200"/>
+                <Border StrokeShape="RoundRectangle 80"
+                    Stroke="White"
+                    StrokeThickness="6"
+                    HeightRequest="125"
+                    WidthRequest="125"
+                    Margin="0,8,0,0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <Image
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
-                    Text="{Binding Stock.name}"
-                    TextColor="Black"
-                    FontAttributes="Bold"/>
-
-            </Border>
-            <VerticalStackLayout Grid.Row="2" Padding="10" Spacing="10">
+                    Source="{Binding Stock.image}"
+                    HeightRequest="125"
+                    WidthRequest="125"/>
+                </Border>
+                <Label Text="{Binding Stock.name}" Grid.Row="1"
+                       Style="{StaticResource LargeLabel}"
+                       HorizontalTextAlignment="Center"
+                       FontAttributes="Bold"/>
                 <Grid RowDefinitions="*, *, *, *, * ,*"
                       ColumnDefinitions="*, *"
                       RowSpacing="20"
-                      ColumnSpacing="20">
+                      ColumnSpacing="20"
+                      Grid.Row="3">
                     <Border Style="{StaticResource CardView}" Grid.Row="0" Grid.Column="0">
-                        <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.open, StringFormat='Price on Market Open: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Style="{StaticResource MediumLabel}" Text="{Binding StockEOD.open, StringFormat='Price on Market Open: ${0}'}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Border>
                     <Border Style="{StaticResource CardView}" Grid.Row="0" Grid.Column="1">
-                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.close, StringFormat='Price on Market Close: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Style="{StaticResource MediumLabel}" Text="{Binding StockEOD.close, StringFormat='Price on Market Close: ${0}'}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Border>
                     <Border Style="{StaticResource CardView}" Grid.Row="1" Grid.Column="0">
-                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.adj_open, StringFormat='Adjusted Price on Market Open: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Style="{StaticResource MediumLabel}" Text="{Binding StockEOD.adj_open, StringFormat='Adjusted Price on Market Open: ${0}'}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Border>
                     <Border Style="{StaticResource CardView}" Grid.Row="1" Grid.Column="1">
-                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.adj_close, StringFormat='Adjusted Price on Market Close: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Style="{StaticResource MediumLabel}" Text="{Binding StockEOD.adj_close, StringFormat='Adjusted Price on Market Close: ${0}'}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Border>
                     <Border Style="{StaticResource CardView}" Grid.Row="2" Grid.Column="0">
-                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.high, StringFormat='Highest Price on the day: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Style="{StaticResource MediumLabel}" Text="{Binding StockEOD.high, StringFormat='Highest Price on the day: ${0}'}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Border>
                     <Border Style="{StaticResource CardView}" Grid.Row="2" Grid.Column="1">
-                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.low, StringFormat='Lowest Price on the day: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Style="{StaticResource MediumLabel}" Text="{Binding StockEOD.low, StringFormat='Lowest Price on the day: ${0}'}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Border>
                     <Border Style="{StaticResource CardView}" Grid.Row="3" Grid.Column="0">
-                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.adj_high, StringFormat='Adjusted Highest Price on the day: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Style="{StaticResource MediumLabel}" Text="{Binding StockEOD.adj_high, StringFormat='Adjusted Highest Price on the day: ${0}'}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Border>
                     <Border Style="{StaticResource CardView}" Grid.Row="3" Grid.Column="1">
-                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.adj_low, StringFormat='Adjusted Lowest Price on the day: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Style="{StaticResource MediumLabel}" Text="{Binding StockEOD.adj_low, StringFormat='Adjusted Lowest Price on the day: ${0}'}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Border>
                     <Border Style="{StaticResource CardView}" Grid.Row="4" Grid.Column="0">
-                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.volume, StringFormat='Trading Volume: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Style="{StaticResource MediumLabel}" Text="{Binding StockEOD.volume, StringFormat='Trading Volume: ${0}'}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Border>
                     <Border Style="{StaticResource CardView}" Grid.Row="4" Grid.Column="1">
-                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.adj_volume, StringFormat='Adjusted Trading Volume: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Style="{StaticResource MediumLabel}" Text="{Binding StockEOD.adj_volume, StringFormat='Adjusted Trading Volume: ${0}'}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Border>
                     <Border Style="{StaticResource CardView}" Grid.Row="5" Grid.Column="0">
-                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.dividend, StringFormat='Dividend Price: ${0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Style="{StaticResource MediumLabel}" Text="{Binding StockEOD.dividend, StringFormat='Dividend Price: ${0}'}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Border>
                     <Border Style="{StaticResource CardView}" Grid.Row="5" Grid.Column="1">
-                            <Label Style="{StaticResource LargeLabel}" Text="{Binding StockEOD.asset_type, StringFormat='Asset Type: {0}'}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Style="{StaticResource MediumLabel}" Text="{Binding StockEOD.asset_type, StringFormat='Asset Type: {0}'}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Border>
 
                 </Grid>
-            </VerticalStackLayout>
-            <Button Text="Get Stocks"
+                <Button Text="Get Stocks"
                 Command="{Binding GetStockDetailsCommand}"
                 IsEnabled="{Binding IsNotBusy}"
-                Grid.Row="1"
+                Grid.Row="4"
                 Grid.Column="0"
                 Style="{StaticResource ButtonOutline}"
                 Margin="8"/>
