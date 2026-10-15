@@ -54,6 +54,33 @@ namespace StockTracker.Services
             }
             return stockList;
         }
+        List<Stock> stockSearchList;
+        public async Task<List<Stock>> GetTickersBySearch(string query)
+        {
+            if (stockSearchList?.Count > 0)
+                stockSearchList.Clear();
+            var request = new HttpRequestMessage()
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri("https://api.marketstack.com/v2/tickerslist?search=" + query + "&limit=" + stockApiLimit + "&access_key=" + stockApiKey),
+                Headers =
+                {
+                    {"Accept", "application/json" },
+                },
+            };
+            using (var response = await httpClient.SendAsync(request))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonObject resp;
+                    resp = await response.Content.ReadFromJsonAsync<JsonObject>();
+                    KeyValuePair<string, JsonNode> result = resp.GetAt(1);
+                    JsonNode data = result.Value;
+                    stockSearchList = JsonSerializer.Deserialize<List<Stock>>(data);
+                }
+            }
+            return stockSearchList;
+        }
         StockExchangeEOD exchangeDetails;
         public async Task<StockExchangeEOD> GetExchangeDetails(string tickerParam)
         {

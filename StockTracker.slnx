@@ -1,3 +1,5 @@
 <Solution>
-  <Project Path="StockTracker/StockTracker.csproj" />
+  <Project Path="StockTracker/StockTracker.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
 </Solution>

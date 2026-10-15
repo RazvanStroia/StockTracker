@@ -4,6 +4,7 @@ using System.Reflection;
 using StockTracker.ViewModel;
 using StockTracker.Services;
 using MauiIcons.SegoeFluent;
+using CommunityToolkit.Maui;
 
 namespace StockTracker
 {
@@ -13,7 +14,7 @@ namespace StockTracker
         {
             var builder = MauiApp.CreateBuilder();
             builder
-                .UseMauiApp<App>()
+                .UseMauiApp<App>().UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -25,7 +26,7 @@ namespace StockTracker
             builder.Services.AddSingleton<StockViewModel>();
             builder.Services.AddSingleton<StockService>();
 
-            builder.Services.AddTransient<StockSearchViewModel>();
+            builder.Services.AddSingleton<StockSearchViewModel>();
             builder.Services.AddTransient<StockDetailsViewModel>();
 
             builder.AddAppSettings();
