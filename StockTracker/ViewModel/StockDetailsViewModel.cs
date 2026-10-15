@@ -1,13 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using StockTracker.Model;
-using StockTracker.Services;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Diagnostics;
-using StockTracker.View;
+﻿using StockTracker.Services;
 
 namespace StockTracker.ViewModel
 {
@@ -44,7 +35,7 @@ namespace StockTracker.ViewModel
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Unable to get monkeys: {ex.Message}");
+                Debug.WriteLine($"Unable to get stocks: {ex.Message}");
             }
             finally
             {

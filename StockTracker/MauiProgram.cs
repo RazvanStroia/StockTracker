@@ -1,10 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using System.Reflection;
-using StockTracker.ViewModel;
-using StockTracker.Services;
+﻿using CommunityToolkit.Maui;
 using MauiIcons.SegoeFluent;
-using CommunityToolkit.Maui;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using StockTracker.Services;
+using System.Reflection;
 
 namespace StockTracker
 {
@@ -32,7 +31,7 @@ namespace StockTracker
             builder.AddAppSettings();
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
@@ -44,7 +43,7 @@ namespace StockTracker
                 .GetExecutingAssembly()
                 .GetManifestResourceStream("StockTracker.appsettings.json");
 
-            if(stream != null)
+            if (stream != null)
             {
                 IConfigurationRoot config = new ConfigurationBuilder()
                     .AddJsonStream(stream)
@@ -52,6 +51,6 @@ namespace StockTracker
                 builder.Configuration.AddConfiguration(config);
             }
         }
-        public static IServiceProvider Services {  get; }
+        public static IServiceProvider Services { get; }
     }
 }

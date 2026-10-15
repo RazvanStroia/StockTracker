@@ -1,15 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using Microsoft.Extensions.Configuration;
-using StockTracker.Model;
+﻿using Microsoft.Extensions.Configuration;
 using StockTracker.Services;
 using StockTracker.View;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Text;
 
 namespace StockTracker.ViewModel
 {
@@ -19,7 +10,8 @@ namespace StockTracker.ViewModel
         StockService stockService;
         IConfiguration configuration;
         private string stockLogoPK;
-        public StockSearchViewModel(StockService stockService, IConfiguration config) {
+        public StockSearchViewModel(StockService stockService, IConfiguration config)
+        {
             Title = "Stock Search";
             this.stockService = stockService;
             this.configuration = config;
@@ -60,7 +52,7 @@ namespace StockTracker.ViewModel
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Unable to get monkeys: {ex.Message}");
+                Debug.WriteLine($"Unable to get stocks: {ex.Message}");
             }
             finally
             {

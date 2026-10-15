@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace StockTracker
+﻿namespace StockTracker
 {
     public partial class App : Application
     {

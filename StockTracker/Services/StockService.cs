@@ -1,14 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
-using StockTracker;
-using StockTracker.Model;
-using System;
-using System.Collections.Generic;
-using System.Net.Http.Headers;
 using System.Net.Http.Json;
-using System.Text;
-using System.Text.Json;
 using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
 
 namespace StockTracker.Services
 {
@@ -27,7 +19,7 @@ namespace StockTracker.Services
         }
 
         List<Stock> stockList;
-        
+
         public async Task<List<Stock>> GetTickers()
         {
             if (stockList?.Count > 0)
@@ -87,7 +79,7 @@ namespace StockTracker.Services
             var request = new HttpRequestMessage()
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri("https://api.marketstack.com/v2/exchanges/XNAS/eod/latest?symbols="+ tickerParam +"&limit="+ stockApiLimit +"&access_key=" + stockApiKey),
+                RequestUri = new Uri("https://api.marketstack.com/v2/exchanges/XNAS/eod/latest?symbols=" + tickerParam + "&limit=" + stockApiLimit + "&access_key=" + stockApiKey),
                 Headers =
                 {
                     {"Accept", "application/json" },
@@ -113,7 +105,7 @@ namespace StockTracker.Services
             var request = new HttpRequestMessage()
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri("https://api.marketstack.com/v2/tickers/"+ stock.ticker + "/eod/latest?limit=" + stockApiLimit + "&access_key=" + stockApiKey),
+                RequestUri = new Uri("https://api.marketstack.com/v2/tickers/" + stock.ticker + "/eod/latest?limit=" + stockApiLimit + "&access_key=" + stockApiKey),
                 Headers =
     {
         { "Accept", "application/json" },

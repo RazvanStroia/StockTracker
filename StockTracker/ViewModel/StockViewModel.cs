@@ -1,15 +1,6 @@
-﻿using CommunityToolkit.Mvvm.Input;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Maui.Animations;
-using StockTracker.Model;
+﻿using Microsoft.Extensions.Configuration;
 using StockTracker.Services;
 using StockTracker.View;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Text;
-using System.Windows.Input;
 
 
 namespace StockTracker.ViewModel
@@ -62,7 +53,7 @@ namespace StockTracker.ViewModel
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Unable to get monkeys: {ex.Message}");
+                Debug.WriteLine($"Unable to get stocks: {ex.Message}");
             }
             finally
             {

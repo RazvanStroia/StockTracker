@@ -49,7 +49,7 @@
                 Command="{Binding GetStocksCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="1"
-                Grid.Column="0"
+                Grid.ColumnSpan="2"
                 Style="{StaticResource ButtonOutline}"
                 Margin="8"/>
 

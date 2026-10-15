@@ -1,6 +1,4 @@
-﻿using StockTracker.ViewModel;
-
-namespace StockTracker.View
+﻿namespace StockTracker.View
 {
     public partial class MainPage : ContentPage
     {

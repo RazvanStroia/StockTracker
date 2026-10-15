@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace StockTracker.Model
 {
@@ -13,7 +10,7 @@ namespace StockTracker.Model
         public bool has_eod { get; set; }
         public StockExchange stock_exchange { get; set; }
         public string image { get; set; }
-        public double? open {  get; set; }
+        public double? open { get; set; }
     }
     [JsonSerializable(typeof(List<Stock>))]
     internal sealed partial class StockContext : JsonSerializerContext

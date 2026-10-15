@@ -71,10 +71,10 @@
                         <Label Style="{StaticResource MediumLabel}" Text="{Binding StockEOD.adj_low, StringFormat='Adjusted Lowest Price on the day: ${0}'}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Border>
                     <Border Style="{StaticResource CardView}" Grid.Row="4" Grid.Column="0">
-                        <Label Style="{StaticResource MediumLabel}" Text="{Binding StockEOD.volume, StringFormat='Trading Volume: ${0}'}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Style="{StaticResource MediumLabel}" Text="{Binding StockEOD.volume, StringFormat='Trading Volume: {0:#,#} unit/s'}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Border>
                     <Border Style="{StaticResource CardView}" Grid.Row="4" Grid.Column="1">
-                        <Label Style="{StaticResource MediumLabel}" Text="{Binding StockEOD.adj_volume, StringFormat='Adjusted Trading Volume: ${0}'}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Style="{StaticResource MediumLabel}" Text="{Binding StockEOD.adj_volume, StringFormat='Adjusted Trading Volume: {0:#,#} unit/s'}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Border>
                     <Border Style="{StaticResource CardView}" Grid.Row="5" Grid.Column="0">
                         <Label Style="{StaticResource MediumLabel}" Text="{Binding StockEOD.dividend, StringFormat='Dividend Price: ${0}'}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
