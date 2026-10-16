@@ -81,6 +81,20 @@ The app won't load stock data or logos without these keys.
    dotnet build StockTracker/StockTracker.csproj -f net10.0-android
 ```
 
+## Screenshots
+
+- MainPage
+
+![MainPage](Screenshots/MainPage.png)
+
+- StockDetailsPage
+
+![StockDetailsPage](Screenshots/StockDetailsPage.png)
+
+- StockSearchPage
+
+![StockSearchPage](Screenshots/StockSearchPage.png)
+
 ## Project Structure
 
 ```
